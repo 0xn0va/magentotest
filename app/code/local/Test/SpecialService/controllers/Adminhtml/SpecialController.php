@@ -5,22 +5,12 @@ class Test_SpecialService_Adminhtml_SpecialController extends Mage_Adminhtml_Con
     public function indexAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('mycustomtab')
-            ->_title($this->__('Index Action'));
+            ->_setActiveMenu('specialservicetab')
+            ->_title($this->__('UK'));
 
         // my stuff
 
         $this->renderLayout();
     }
 
-    public function listAction()
-    {
-        $this->loadLayout()
-            ->_setActiveMenu('mycustomtab')
-            ->_title($this->__('List Action'));
-
-        // my stuff
-
-        $this->renderLayout();
-    }
 }
