@@ -5,31 +5,48 @@
             <version>0.1.0</version>
         </Test_SpecialService>
     </modules>
+
+
     <global>
+
         <blocks>
             <test_specialserviceblock>
                 <class>Inchoo_CoffeeFreak_Block</class>
             </test_specialserviceblock>
 
         </blocks>
+
+
         <helpers>
-            <test_specialservice>
-                <class>Mage_Core_Helper</class>
-            </test_specialservice>
+            <!--<test_specialservice>-->
+                <!--<class>Mage_Core_Helper</class>-->
+            <!--</test_specialservice>-->
             <test_specialservicehelper>
                 <class>Test_SpecialService_Helper</class>
             </test_specialservicehelper>
         </helpers>
+
+
     </global>
+
+
+
+
     <admin>
         <routers>
             <adminhtml>
                 <args>
+                    <module>Test_SpecialService_Adminhtml</module>
+
                     <modules>
-                        <foo_bar before="Mage_Adminhtml">Test_SpecialService_Adminhtml</foo_bar>
+                        <foo_bar after="Test_SpecialService_Adminhtml">Mage_Adminhtml</foo_bar>
                     </modules>
                 </args>
             </adminhtml>
         </routers>
     </admin>
+
+
+
+
 </config>

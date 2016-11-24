@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <menu>
-        <mycustomtab module="test_specialservice" translate="title">
+        <mycustomtab module="test_specialservicehelper" translate="title">
             <title>Special Customer Service</title>
             <sort_order>20</sort_order>
             <children>
-                <index translate="title" module="test_specialservice">
+                <index translate="title" module="test_specialservicehelper">
                     <title>UK</title>
                     <children>
-                        <attributes translate="title" module="test_specialservice">
+                        <attributes translate="title" module="test_specialservicehelper">
                             <title>Account Managers</title>
                             <action>adminhtml/special-service/</action>
                         </attributes>
-                        <sets translate="title" module="test_specialservice">
+                        <sets translate="title" module="test_specialservicehelper">
                             <title>After Sales Support</title>
                             <action>adminhtml/special-after-sales/</action>
                         </sets>
@@ -27,7 +27,7 @@
         <resources>
             <admin>
                 <children>
-                    <custom translate="title" module="test_specialservice">
+                    <custom translate="title" module="test_specialservicehelper">
                         <title>My Controller</title>
                         <sort_order>-20</sort_order>
                         <children>
