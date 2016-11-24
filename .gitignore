@@ -1,0 +1,6 @@
+app/etc/local.xml
+downloader/.cache
+downloader/cache.cfg
+downloader/connect.cfg
+var/
+media/catalog/product/cache
