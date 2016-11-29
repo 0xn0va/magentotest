@@ -2,9 +2,9 @@
 
 <config>
     <modules>
-        <Test_SpecialService>
+        <Abdo_Vaimo>
             <active>true</active>
             <codePool>local</codePool>
-        </Test_SpecialService>
+        </Abdo_Vaimo>
     </modules>
 </config>

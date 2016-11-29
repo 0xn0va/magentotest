@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Abdo_Vaimo>
+            <version>0.1.5</version>
+        </Abdo_Vaimo>
+    </modules> 
+
+    <global>
+        <blocks>
+            <abdovaimoblock1>
+            	<class>Abdo_Vaimo_Block</class>
+           	</abdovaimoblock1>
+			<abdovaimoblock2>
+            	<class>Abdo_Vaimo_Block_EditSpecial</class>
+           	</abdovaimoblock2>
+        </blocks>
+        <helpers>
+            <abdovaimohelper1>
+                <class>Abdo_Vaimo_Helper</class>
+            </abdovaimohelper1>
+        </helpers>  
+	</global>    
+	
+
+
+
+
+	
+	<admin>
+		<routers>
+    
+		   <samplerouter1>
+                <use>admin</use>
+                <args>
+                    <module>Abdo_Vaimo_AdminControllersHere</module>
+                    <frontName>admin</frontName>
+                    
+                    <modules>
+		         		<sintax after="Abdo_Vaimo_AdminControllersHere">Mage_Adminhtml</sintax>
+		       		</modules>
+                </args>
+		   </samplerouter1>		     
+		     
+		     
+		     
+	     </routers>    	
+	</admin>
+	
+	
+	
+	
+    
+    <adminhtml>
+ 
+    
+        <menu>
+             <mymenu1 translate="title" module="abdovaimohelper1">
+                <title>Special Service</title>
+                <sort_order>20</sort_order>
+                <children>
+
+                    <myitem1 translate="title" module="abdovaimohelper1">
+                        <title>UK</title>
+                        <action>samplerouter1/AbdoVaimo</action>
+                        <sort_order>1</sort_order>
+                    </myitem1>
+
+				</children>
+             </mymenu1>
+        </menu>
+	</adminhtml>    
+    
+</config>
