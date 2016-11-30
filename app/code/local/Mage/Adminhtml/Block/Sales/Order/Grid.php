@@ -59,7 +59,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
         $collection = Mage::getResourceModel($this->_getCollectionClass());
 
         //add database connection for orders grid
-        $collection->getSelect()->join('abdo_vaimo_accmanagers', 'abdo_vaimo_accmanagers.entity_id = abdo_vaimo_accmanagers.name',array('name'));
+//        $collection->getSelect()->join('abdo_vaimo_accmanagers', 'main_table.entity_id = abdo_vaimo_accmanagers.postal_sector',array('name'));
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
