@@ -1,75 +1,63 @@
 <?xml version="1.0"?>
-
 <config>
     <modules>
         <Abdo_Vaimo>
-            <version>0.1.5</version>
+            <version>0.1.8</version>
         </Abdo_Vaimo>
-    </modules> 
+    </modules>
 
     <global>
         <blocks>
-            <abdovaimoblock1>
-            	<class>Abdo_Vaimo_Block</class>
-           	</abdovaimoblock1>
-			<abdovaimoblock2>
-            	<class>Abdo_Vaimo_Block_EditSpecial</class>
-           	</abdovaimoblock2>
+            <abdo_vaimo_adminhtml>
+                <class>Abdo_Vaimo_Block_Adminhtml</class>
+            </abdo_vaimo_adminhtml>
         </blocks>
+
         <helpers>
-            <abdovaimohelper1>
+            <abdo_vaimo>
                 <class>Abdo_Vaimo_Helper</class>
-            </abdovaimohelper1>
-        </helpers>  
-	</global>    
-	
+            </abdo_vaimo>
+        </helpers>
 
+        <models>
+            <abdo_vaimo>
+                <class>Abdo_Vaimo_Model</class>
+                <resourceModel>abdo_vaimo_resource</resourceModel>
+            </abdo_vaimo>
+            <abdo_vaimo_resource>
+                <class>Abdo_Vaimo_Model_Resource</class>
+                <entities>
+                    <accmanagers>
+                        <table>abdo_vaimo_accmanagers</table>
+                    </accmanagers>
+                </entities>
+            </abdo_vaimo_resource>
+        </models>
 
+        <resources>
+            <abdo_vaimo_setup>
+                <setup>
+                    <module>Abdo_Vaimo</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </abdo_vaimo_setup>
+        </resources>
 
+    </global>
 
-	
-	<admin>
-		<routers>
-    
-		   <samplerouter1>
+    <admin>
+        <routers>
+            <abdo_vaimo_admin>
                 <use>admin</use>
                 <args>
-                    <module>Abdo_Vaimo_AdminControllersHere</module>
-                    <frontName>admin</frontName>
-                    
-                    <modules>
-		         		<sintax after="Abdo_Vaimo_AdminControllersHere">Mage_Adminhtml</sintax>
-		       		</modules>
+                    <module>Abdo_Vaimo_Adminhtml</module>
+                    <frontName>accmanagers-directory-admin</frontName>
                 </args>
-		   </samplerouter1>		     
-		     
-		     
-		     
-	     </routers>    	
-	</admin>
-	
-	
-	
-	
-    
-    <adminhtml>
- 
-    
-        <menu>
-             <mymenu1 translate="title" module="abdovaimohelper1">
-                <title>Special Service</title>
-                <sort_order>20</sort_order>
-                <children>
+            </abdo_vaimo_admin>
+        </routers>
+    </admin>
 
-                    <myitem1 translate="title" module="abdovaimohelper1">
-                        <title>UK</title>
-                        <action>samplerouter1/AbdoVaimo</action>
-                        <sort_order>1</sort_order>
-                    </myitem1>
-
-				</children>
-             </mymenu1>
-        </menu>
-	</adminhtml>    
-    
 </config>
