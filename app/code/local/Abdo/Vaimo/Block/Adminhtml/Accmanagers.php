@@ -10,7 +10,7 @@ class Abdo_Vaimo_Block_Adminhtml_Accmanagers extends Mage_Adminhtml_Block_Widget
         $this->_controller = 'accmanagers';
 
         $this->_headerText = Mage::helper('abdo_vaimo')
-            ->__('Special Customers');
+            ->__('UK Account Managers List');
     }
     
     public function getCreateUrl()

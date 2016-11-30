@@ -3,14 +3,14 @@
 
     <menu>
         <abdo_vaimo translate="title" module="abdo_vaimo">
-            <title>Special Customers</title>
+            <title>Account Managers</title>
             <sort_order>20</sort_order>
             <depends>
                 <module>Abdo_Vaimo</module>
             </depends>
             <children>
                 <accmanagers translate="title" module="abdo_vaimo">
-                    <title>Manage Account Managers</title>
+                    <title>UK Account Managers</title>
                     <sort_order>20</sort_order>
                  <action>abdo_vaimo_admin/accmanagers</action>
                 </accmanagers>
@@ -23,11 +23,11 @@
             <admin>
                 <children>
                     <abdo_vaimo translate="title" module="abdo_vaimo">
-                        <title>Special Customers</title>
+                        <title>Account Managers</title>
                         <sort_order>20</sort_order>
                         <children>
                             <accmanagers translate="title" module="abdo_vaimo">
-                                <title>Manage Account Manager</title>
+                                <title>UK Account Manager</title>
                             </accmanagers>
                         </children>
                     </abdo_vaimo>
