@@ -71,7 +71,7 @@ $resultNum = $installer->getConnection()->insertArray(
 );
 
 Mage::log(
-    __FILE__." added $resultNum records to $installer->getTable({TABLE NAME})",
+    __FILE__." added $resultNum records to $installer->getTable(abdo_vaimo_accmanagers)",
     Zend_Log::INFO,
     "setup.log",
     true

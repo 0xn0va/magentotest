@@ -66,12 +66,12 @@ $data = $csv->getData('account_managers_updated.csv');
 
 $resultNum = $installer->getConnection()->insertArray(
     $installer->getTable(abdo_vaimo_accmanagers),
-    array(entity_id,created_at,updated_at,name,postal_sector,description),    //column names
+    array(entity_id,created_at,updated_at,name,postal_sector,description),
     $data
 );
 
 Mage::log(
-    __FILE__." added $resultNum records to $installer->getTable({TABLE NAME})",
+    __FILE__." added $resultNum records to $installer->getTable(abdo_vaimo_accmanagers)",
     Zend_Log::INFO,
     "setup.log",
     true
