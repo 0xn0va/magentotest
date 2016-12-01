@@ -1,5 +1,6 @@
 <?php
-$this->startSetup();
+$installer = $this;
+$installer->startSetup();
 
 $table = new Varien_Db_Ddl_Table();
 $table->setName($this->getTable('abdo_vaimo/accmanagers'));
@@ -57,5 +58,24 @@ $table->addColumn(
 
 $table->setOption('type', 'InnoDB');
 $table->setOption('charset', 'utf8');
-$this->getConnection()->createTable($table);
-$this->endSetup();
+$installer->getConnection()->createTable($table);
+
+//initial import on install from csv file
+$csv = new Varien_File_Csv;
+$data = $csv->getData('account_managers_updated.csv');
+
+$resultNum = $installer->getConnection()->insertArray(
+    $installer->getTable(abdo_vaimo_accmanagers),
+    array(entity_id,created_at,updated_at,name,postal_sector,description),    //column names
+    $data
+);
+
+Mage::log(
+    __FILE__." added $resultNum records to $installer->getTable({TABLE NAME})",
+    Zend_Log::INFO,
+    "setup.log",
+    true
+);
+
+
+$installer->endSetup();

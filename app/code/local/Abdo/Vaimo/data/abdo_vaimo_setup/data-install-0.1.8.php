@@ -1,54 +1,81 @@
 <?php
-set_time_limit(0);
-ini_set('memory_limit', '1024M');
-include_once "app/Mage.php";
-include_once "downloader/Maged/Controller.php";
+$installer = $this;
+$installer->startSetup();
 
-Mage::init();
-
-$app = Mage::app('default');
-
-$categories = array(
-    'Category 1' => 3,
-    'Category 2' => 4,
-    'Category 3' =>5,
-    'Category 4'=>6,
-
-
+$table = new Varien_Db_Ddl_Table();
+$table->setName($this->getTable('abdo_vaimo/accmanagers'));
+$table->addColumn(
+    'entity_id',
+    Varien_Db_Ddl_Table::TYPE_INTEGER,
+    10,
+    array(
+        'auto_increment' => true,
+        'unsigned' => true,
+        'nullable'=> false,
+        'primary' => true
+    )
 );
-$row = 0;
+$table->addColumn(
+    'created_at',
+    Varien_Db_Ddl_Table::TYPE_DATETIME,
+    null,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'updated_at',
+    Varien_Db_Ddl_Table::TYPE_DATETIME,
+    null,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'name',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    255,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'postal_sector',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    255,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'description',
+    Varien_Db_Ddl_Table::TYPE_TEXT,
+    null,
+    array(
+        'nullable' => false,
+    )
+);
 
-if (($handle = fopen("account_managers.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        echo 'Importing product: '.$data[0].'<br />';
-        foreach($data as $d)
-        {
-            echo $d.'<br />';
-        }
-        $num = count($data);
-        $row++;
+$table->setOption('type', 'InnoDB');
+$table->setOption('charset', 'utf8');
+$installer->getConnection()->createTable($table);
 
-        if($row == 1) continue;
+//initial import on install from csv file
+$csv = new Varien_File_Csv;
+$data = $csv->getData('account_managers_updated.csv');
 
-        $accmanagers = Mage::getModel('abdo_vaimo/accmanagers');
+$resultNum = $installer->getConnection()->insertArray(
+    $installer->getTable(abdo_vaimo_accmanagers),
+    array(entity_id,created_at,updated_at,name,postal_sector,description),    //column names
+    $data
+);
 
-        $product->setSku($data[0]);
-        $product->setName($data[3]);
-        $product->setDescription($data[4]);
-        $product->setShortDescription('');
-        $product->setManufacturer($data[20]);
-        $product->setPrice($data[9]);
-        $product->setTypeId('simple');
-
+Mage::log(
+    __FILE__." added $resultNum records to $installer->getTable({TABLE NAME})",
+    Zend_Log::INFO,
+    "setup.log",
+    true
+);
 
 
-        $accmanagers->save();
-
-
-    }
-    fclose($handle);
-
-}
-
-
-?>
+$installer->endSetup();
