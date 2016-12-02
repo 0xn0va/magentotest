@@ -62,11 +62,11 @@ $installer->getConnection()->createTable($table);
 
 //initial import on install from csv file
 $csv = new Varien_File_Csv;
-$data = $csv->getData('account_managers_updated.csv');
+$data = $csv->getData('app/code/local/Abdo/Vaimo/sql/abdo_vaimo_setup/account_managers_updated.csv');
 
 $resultNum = $installer->getConnection()->insertArray(
     $installer->getTable(abdo_vaimo_accmanagers),
-    array(entity_id,created_at,updated_at,name,postal_sector,description),    //column names
+    array(entity_id,created_at,updated_at,name,postal_sector,description),
     $data
 );
 
